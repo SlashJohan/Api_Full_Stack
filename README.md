@@ -1,48 +1,27 @@
-# Prueba Técnica FullStack (.NET 6 + Angular 17)
+# QualaFrontend
 
-Este proyecto es una aplicación web desarrollada como parte de una prueba técnica para el cargo de desarrollador FullStack.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
 
-## 🛠️ Tecnologías utilizadas
+## Development server
 
-### Backend (.NET 6)
-- ASP.NET Core Web API
-- Dapper con procedimientos almacenados
-- Autenticación con JWT
-- SQL Server
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-### Frontend (Angular 17)
-- Angular CLI 17
-- Ng Zorro Ant Design
-- Interceptor para token JWT
-- Control de acceso con AuthGuard
+## Code scaffolding
 
----
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## 🚀 Funcionalidad
+## Build
 
-1. Inicio de sesión con autenticación JWT
-2. Redirección automática al módulo de sucursales al iniciar sesión
-3. Carga y visualización de la lista de sucursales desde el backend
-4. Tabla con paginación y scroll horizontal (Ng Zorro)
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
----
+## Running unit tests
 
-## 🧪 Cómo ejecutar el proyecto
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-### Requisitos
+## Running end-to-end tests
 
-- Node.js 18+
-- Angular CLI 17
-- .NET 6 SDK
-- SQL Server
-- Visual Studio 2022 o VS Code
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-### Backend
-1. Configura la cadena de conexión en `appsettings.json`.
-2. Restaura paquetes y ejecuta el proyecto (`dotnet run`).
-3. Asegúrate de que los endpoints estén en `https://localhost:7007`.
+## Further help
 
-### Frontend
-```bash
-npm install
-ng serve
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
