@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "6R/5oWrRguqz9Pxl6Nqn8hNe9DLsqMFPPRd07wc7LVM=",
+  "Source": "Quala.Api",
+  "BasePath": "_content/Quala.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
