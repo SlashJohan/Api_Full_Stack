@@ -1,27 +1,172 @@
-# QualaFrontend
+# 🧪 Prueba Técnica Full Stack - Quala
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+Este proyecto incluye:
 
-## Development server
+- ✅ Backend en .NET 6 con Dapper, JWT, SQL Server
+- ✅ Frontend en Angular 17 + Ng Zorro
+- ✅ Base de datos con procedimientos almacenados
+- ✅ Control de autenticación por JWT
+- ✅ CRUD completo de sucursales
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+🔙 Ejecutar Backend (.NET)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Ir a la carpeta:
 
-## Build
+cd Quala.Api
+---------------------------------------------------------
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Modificar appsettings.json si lo necesitas:
 
-## Running unit tests
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost;Database=TestDB;Trusted_Connection=True;TrustServerCertificate=True;"
+}
+-----------------------------------------------------------
+Ejecutar:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+dotnet run
+----------------------------------------------------------
 
-## Running end-to-end tests
+Swagger disponible en:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+https://localhost:7007/swagger
+---------------------------------------------------------
 
-## Further help
+Scripts Utilazdos en al base de datos:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+USE TestDB;
+GO
+
+-- Crear tabla JD_suc_sucursal
+IF OBJECT_ID('JD_suc_sucursal', 'U') IS NULL
+BEGIN
+    CREATE TABLE JD_suc_sucursal (
+        Codigo INT IDENTITY(1,1) PRIMARY KEY,
+        Descripcion NVARCHAR(250) NOT NULL,
+        Direccion NVARCHAR(250) NOT NULL,
+        Identificacion NVARCHAR(50) NOT NULL,
+        FechaCreacion DATE NOT NULL,
+        MonedaId INT NOT NULL
+    );
+END;
+GO
+
+
+--USE [TestDB];
+--GO
+
+--SET ANSI_NULLS ON;
+--GO
+--SET QUOTED_IDENTIFIER ON;
+--GO
+
+----  SP: Insertar
+--CREATE OR ALTER PROCEDURE JD_usp_InsertarSucursal
+--    @Descripcion NVARCHAR(250),
+--    @Direccion NVARCHAR(250),
+--    @Identificacion NVARCHAR(50),
+--    @FechaCreacion DATE,
+--    @MonedaId INT
+--AS
+--BEGIN
+--    INSERT INTO JD_suc_sucursal (Descripcion, Direccion, Identificacion, FechaCreacion, MonedaId)
+--    VALUES (@Descripcion, @Direccion, @Identificacion, @FechaCreacion, @MonedaId);
+
+--    SELECT SCOPE_IDENTITY() AS NuevoCodigo;
+--END;
+--GO
+
+
+
+----  SP: Obtener todos
+--CREATE OR ALTER PROCEDURE JD_usp_ObtenerSucursales
+--AS
+--BEGIN
+--    SELECT * FROM JD_suc_sucursal;
+--END;
+--GO
+
+
+
+----  SP: Obtener por ID
+--CREATE OR ALTER PROCEDURE JD_usp_ObtenerSucursalPorId
+--    @Codigo INT
+--AS
+--BEGIN
+--    SELECT * FROM JD_suc_sucursal WHERE Codigo = @Codigo;
+--END;
+--GO
+
+
+
+----  SP: Actualizar
+--CREATE OR ALTER PROCEDURE JD_usp_ActualizarSucursal
+--    @Codigo INT,
+--    @Descripcion NVARCHAR(250),
+--    @Direccion NVARCHAR(250),
+--    @Identificacion NVARCHAR(50),
+--    @FechaCreacion DATE,
+--    @MonedaId INT
+--AS
+--BEGIN
+--    UPDATE JD_suc_sucursal
+--    SET
+--        Descripcion = @Descripcion,
+--        Direccion = @Direccion,
+--        Identificacion = @Identificacion,
+--        FechaCreacion = @FechaCreacion,
+--        MonedaId = @MonedaId
+--    WHERE Codigo = @Codigo;
+--END;
+--GO
+
+
+
+
+----  SP: Eliminar
+--CREATE OR ALTER PROCEDURE JD_usp_EliminarSucursal
+--    @Codigo INT
+--AS
+--BEGIN
+--    DELETE FROM JD_suc_sucursal WHERE Codigo = @Codigo;
+--END;
+--GO
+
+
+--EXEC JD_usp_ObtenerSucursales;
+
+
+/**************CREACION DE TABLA MONEDAS CON LISTA ****************/
+--USE TestDB;
+--GO
+
+---- Crear la tabla
+--IF OBJECT_ID('JD_mon_Moneda', 'U') IS NULL
+--BEGIN
+--    CREATE TABLE JD_mon_Moneda (
+--        Id INT IDENTITY(1,1) PRIMARY KEY,
+--        Descripcion NVARCHAR(50) NOT NULL
+--    );
+--END
+--GO
+
+---- Insertar datos base
+--INSERT INTO JD_mon_Moneda (Descripcion) VALUES
+--('COP'), -- Peso colombiano
+--('USD'), -- Dólar estadounidense
+--('EUR'), -- Euro
+--('MXN'), -- Peso mexicano
+--('BRL'); -- Real brasileño
+--GO
+
+---- Verificar los datos insertados
+--USE TestDB SELECT * FROM JD_mon_Moneda;
+--USE TestDB SELECT * FROM JD_suc_sucursal
+--USE TestDB SELECT * FROM JD_mon_Moneda
+
+
+
+
+
+
